@@ -6,7 +6,9 @@ const ApplicationList = ({ myApplicationPromise }) => {
 
   return (
     <div>
-      <h2>Job Applied so far: {applications.length}</h2>
+      <h2 className="text-4xl font-bold text-center my-8">
+        Job Applied so far: {applications.length}
+      </h2>
 
       <div className="overflow-x-auto">
         <table className="table-auto w-full min-w-[600px] md:min-w-full overflow-x-hidden">
@@ -18,7 +20,7 @@ const ApplicationList = ({ myApplicationPromise }) => {
               </th>
               <th className="p-2 md:p-4">Name</th>
               <th className="p-2 md:p-4">Job</th>
-              <th className="p-2 md:p-4">Favorite Color</th>
+              <th className="p-2 md:p-4">Delete</th>
               <th className="p-2 md:p-4"></th>
             </tr>
           </thead>
