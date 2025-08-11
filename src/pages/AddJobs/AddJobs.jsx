@@ -8,7 +8,22 @@ const AddJobs = () => {
     const form = e.target;
     const formData = new FormData(form);
     const jobData = Object.fromEntries(formData.entries());
-    console.log(jobData);
+    // console.log(jobData);
+
+    //process salary range data
+    const { min, max, currency, ...newJob } = jobData;
+    newJob.salaryRange = { min, max, currency };
+
+    //process requirements
+    newJob.requirements = newJob.requirements
+      .split(",")
+      .map((item) => item.trim());
+    console.log(newJob);
+
+    // process responsibilities
+    newJob.responsibilities = newJob.responsibilities
+      .split(",")
+      .map((item) => item.trim());
   };
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
@@ -65,18 +80,21 @@ const AddJobs = () => {
               type="radio"
               name="jobType"
               aria-label="On-Site"
+              value="on-site"
             />
             <input
               className="btn"
               type="radio"
               name="jobType"
               aria-label="Remote"
+              value="remote"
             />
             <input
               className="btn"
               type="radio"
               name="jobType"
               aria-label="Hybrid"
+              value="hybrid"
             />
           </div>
         </fieldset>
@@ -186,6 +204,7 @@ const AddJobs = () => {
             name="hr_email"
             defaultValue={user?.email || ""}
             placeholder="HR Email"
+            readOnly
           />
         </fieldset>
 
